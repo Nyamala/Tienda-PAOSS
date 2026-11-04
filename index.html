@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PAOSS Tu Tienda · Zapatos para dama</title>
+  <meta name="description" content="PAOSS Tu Tienda: mules, sandalias y tacos para dama. Colección Verano 2026–2027. Pedidos por WhatsApp 969 446 096.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Barra de anuncio -->
+  <div class="aviso">
+    Colección Verano 2026 – 2027 · Pedidos por WhatsApp <strong>969 446 096</strong>
+  </div>
+
+  <!-- Encabezado -->
+  <header class="cabecera" id="inicio">
+    <div class="contenedor cabecera__fila">
+      <a href="#inicio" class="logo" aria-label="PAOSS Tu Tienda, inicio">
+        <span class="logo__marca">PAOSS</span>
+        <span class="logo__sub">tu tienda</span>
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Menú principal">
+        <a href="#colecciones">Colecciones</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#como-comprar">Cómo comprar</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="cabecera__acciones">
+        <button class="btn-icono" id="btnCarrito" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span class="contador" id="contadorCarrito">0</span>
+        </button>
+        <button class="btn-icono btn-menu" id="btnMenu" aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portada -->
+    <section class="portada">
+      <div class="contenedor portada__grid">
+        <div class="portada__texto">
+          <p class="etiqueta">Nueva temporada</p>
+          <h1>La elegancia <em>a tus pies</em></h1>
+          <p class="portada__bajada">Mules, sandalias y tacos para dama, ligeros y cómodos, con diseño moderno y femenino para cualquier ocasión.</p>
+          <div class="portada__botones">
+            <a href="#catalogo" class="btn btn--principal">Ver catálogo</a>
+            <a class="btn btn--secundario js-whatsapp" href="#" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+          </div>
+          <ul class="portada__datos">
+            <li><strong id="totalModelos">50</strong> modelos</li>
+            <li><strong>T. 37 – 39</strong> tallas</li>
+            <li><strong>desde S/ 69</strong></li>
+          </ul>
+        </div>
+        <div class="portada__collage" aria-hidden="true">
+          <img src="img/productos/p40.jpg" alt="" class="collage__a">
+          <img src="img/productos/p21.jpg" alt="" class="collage__b">
+          <img src="img/productos/p51.jpg" alt="" class="collage__c">
+        </div>
+      </div>
+    </section>
+
+    <!-- Colecciones -->
+    <section class="seccion" id="colecciones">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">Nuestras colecciones</h2>
+        <div class="colecciones" id="colecciones-lista"><!-- se llena con JS --></div>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="seccion seccion--suave" id="catalogo">
+      <div class="contenedor">
+        <div class="catalogo__cabecera">
+          <h2 class="titulo-seccion">Catálogo</h2>
+          <p class="catalogo__resultado" id="resultado" aria-live="polite"></p>
+        </div>
+
+        <div class="filtros">
+          <div class="chips" role="tablist" aria-label="Filtrar por colección" id="chips"></div>
+
+          <div class="filtros__controles">
+            <label class="campo">
+              <span class="sr">Buscar</span>
+              <input type="search" id="buscar" placeholder="Buscar modelo, color…">
+            </label>
+            <label class="campo">
+              <span class="sr">Talla</span>
+              <select id="filtroTalla">
+                <option value="">Todas las tallas</option>
+                <option value="37">Talla 37</option>
+                <option value="38">Talla 38</option>
+                <option value="39">Talla 39</option>
+              </select>
+            </label>
+            <label class="campo">
+              <span class="sr">Ordenar</span>
+              <select id="ordenar">
+                <option value="destacados">Destacados</option>
+                <option value="precio-asc">Precio: menor a mayor</option>
+                <option value="precio-desc">Precio: mayor a menor</option>
+                <option value="nombre">Nombre A – Z</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="grilla" id="grilla"><!-- productos con JS --></div>
+        <p class="vacio" id="vacio" hidden>No encontramos modelos con esos filtros. <button class="enlace" id="limpiar">Limpiar filtros</button></p>
+      </div>
+    </section>
+
+    <!-- Cómo comprar -->
+    <section class="seccion" id="como-comprar">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">Cómo comprar</h2>
+        <ol class="pasos">
+          <li>
+            <span class="pasos__num">1</span>
+            <h3>Elige tus modelos</h3>
+            <p>Revisa el catálogo, filtra por talla y agrega a tu bolsa los pares que te gusten.</p>
+          </li>
+          <li>
+            <span class="pasos__num">2</span>
+            <h3>Envía tu pedido</h3>
+            <p>Desde la bolsa, pulsa “Pedir por WhatsApp”: el mensaje se arma solo con tus modelos y el total.</p>
+          </li>
+          <li>
+            <span class="pasos__num">3</span>
+            <h3>Coordinamos contigo</h3>
+            <p>Te confirmamos disponibilidad, forma de pago y entrega por el mismo chat.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="pie" id="contacto">
+    <div class="contenedor pie__grid">
+      <div>
+        <p class="logo logo--claro"><span class="logo__marca">PAOSS</span><span class="logo__sub">tu tienda</span></p>
+        <p class="pie__lema">La elegancia a tus pies.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p>WhatsApp: <a class="js-whatsapp" href="#" target="_blank" rel="noopener"><span class="js-whatsapp-texto">969 446 096</span></a></p>
+        <p>Atención y pedidos por mensaje.</p>
+      </div>
+      <div>
+        <h3>Colecciones</h3>
+        <p><a href="#catalogo" data-ir-categoria="mules">Mules elegantes</a></p>
+        <p><a href="#catalogo" data-ir-categoria="sandalias">Sandalias de verano</a></p>
+        <p><a href="#catalogo" data-ir-categoria="tacos">Tacos elegantes</a></p>
+      </div>
+    </div>
+    <p class="pie__legal contenedor">© <span id="anio"></span> PAOSS Tu Tienda · Precios en soles (S/). Stock sujeto a disponibilidad.</p>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="wsp-flotante js-whatsapp" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6a10.6 10.6 0 0 1-5.4-1.5l-.4-.2-3.9 1 1-3.8-.2-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8.9 3.8.8a3.2 3.2 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4Z"/></svg>
+  </a>
+
+  <!-- Ventana de producto -->
+  <div class="capa" id="capaProducto" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalNombre">
+      <button class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      <div class="modal__img"><img id="modalImg" src="" alt=""></div>
+      <div class="modal__info">
+        <p class="etiqueta" id="modalCategoria"></p>
+        <h3 id="modalNombre"></h3>
+        <p class="modal__precio" id="modalPrecio"></p>
+        <ul class="beneficios">
+          <li>Ligeros y cómodos</li>
+          <li>Diseño moderno y femenino</li>
+          <li>Ideales para cualquier ocasión</li>
+        </ul>
+        <p class="modal__label">Talla disponible</p>
+        <div class="tallas" id="modalTallas"></div>
+        <button class="btn btn--principal btn--ancho" id="modalAgregar">Agregar a la bolsa</button>
+        <a class="btn btn--secundario btn--ancho" id="modalWsp" href="#" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+        <p class="modal__codigo" id="modalCodigo"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bolsa / carrito -->
+  <div class="capa capa--lateral" id="capaCarrito" hidden>
+    <aside class="carrito" role="dialog" aria-modal="true" aria-labelledby="tituloCarrito">
+      <div class="carrito__cabecera">
+        <h3 id="tituloCarrito">Tu bolsa</h3>
+        <button class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <div class="carrito__lista" id="listaCarrito"></div>
+      <div class="carrito__pie" id="pieCarrito">
+        <label class="campo campo--bloque">
+          <span>Tu nombre (opcional)</span>
+          <input type="text" id="clienteNombre" autocomplete="name">
+        </label>
+        <label class="campo campo--bloque">
+          <span>Distrito / ciudad de entrega (opcional)</span>
+          <input type="text" id="clienteLugar">
+        </label>
+        <div class="carrito__total"><span>Total</span><strong id="totalCarrito">S/ 0.00</strong></div>
+        <a class="btn btn--wsp btn--ancho" id="btnPedido" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        <p class="carrito__nota">Se abrirá WhatsApp con tu pedido listo para enviar.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/productos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
